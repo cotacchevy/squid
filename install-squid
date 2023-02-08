@@ -1,0 +1,6 @@
+
+apt -y purge squid* &> /dev/null
+rm -rf /var/spool/squid/* /var/log/squid/* /etc/squid3 /dev/shm/* &> /dev/null
+
+apt -y install squid squid-langpack
+if [ ! -d /var/log/squid ]; then mkdir -p /var/log/squid &&  touch /var/log/squid/{access,cache,store}.log &&  chown -R proxy:proxy /var/log/squid; fi
